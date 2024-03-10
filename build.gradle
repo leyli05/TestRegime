@@ -1,27 +1,47 @@
 plugins {
     id 'java'
-    id "io.freefair.lombok" version "6.5.0-rc1"
 }
 
 group 'ru.netology'
 version '1.0-SNAPSHOT'
+
 sourceCompatibility = 11
-compileJava.options.encoding = "UTF-8"
-compileTestJava.options.encoding = "UTF-8"
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation group: 'org.testng', name: 'testng', version: '7.6.0'
-    implementation group: 'com.codeborne', name: 'selenide', version: '6.5.2'
-    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.1.1'
-    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
-    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    testImplementation 'io.rest-assured:rest-assured:4.3.0'
+    testImplementation 'com.google.code.gson:gson:2.8.6'
+
+    testImplementation 'com.codeborne:selenide:6.17.2'
+    testImplementation("io.github.bonigarcia:webdrivermanager:4.3.1")
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'io.rest-assured:json-schema-validator:4.3.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    testCompileOnly 'org.projectlombok:lombok:1.18.20'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
 
 test {
-    useTestNG()
-    systemProperty('selenide.headless', System.getProperty('selenide.headless'))
+    useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
